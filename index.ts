@@ -1,3 +1,6 @@
+type IObject = {
+    [key: string]: string | number
+}
 type Item = {
     readonly label: string
     readonly key: string
@@ -60,7 +63,7 @@ export const createdEnums = <T extends OptionsArr>(options: T) => {
     /**
      * 枚举
      */
-    const enums: { [key: string]: string | number } = {}
+    const enums: IObject = {}
 
     const keys: string[] = []
     const values: IValueType[] = []
@@ -117,7 +120,7 @@ export const createdEnums = <T extends OptionsArr>(options: T) => {
         return html
     }
 
-    return {
+    const result = {
         /**
          * 枚举
          */
@@ -126,15 +129,15 @@ export const createdEnums = <T extends OptionsArr>(options: T) => {
         /**
          * key 集合
          */
-        keys: keys as GetKeyValueArrayByOptionArray<T, 'key'>,
+        keys: keys as GetKeyValueArrayByOptionArray<T, 'key'>[],
         /**
          * value 集合
          */
-        values: values as GetKeyValueArrayByOptionArray<T, 'value'>,
+        values: values as GetKeyValueArrayByOptionArray<T, 'value'>[],
         /**
          * label 集合
          */
-        labels: labels as GetKeyValueArrayByOptionArray<T, 'label'>,
+        labels: labels as GetKeyValueArrayByOptionArray<T, 'label'>[],
 
         /**
          * 配置信息
@@ -157,4 +160,6 @@ export const createdEnums = <T extends OptionsArr>(options: T) => {
          */
         isEnumValue,
     }
+
+    return result
 }
