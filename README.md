@@ -1,6 +1,6 @@
 # 描述
 
-创建易于使用的枚举
+创建易于使用、并且有类型推导的枚举
 
 # Install
 
@@ -113,9 +113,9 @@ interface Itype {
 
 # 方法
 
-| 属性              | 类型                              | 描述                        |
-| :---------------- | :-------------------------------- | :-------------------------- |
-| `getHtml`         | `(value?: IValueType) => string`  | 根据value值获取html代码     |
-| `getTagHtml`      | `(value?: IValueType) => string`  | 根据value值获取tag html代码 |
-| `getLabelByValue` | `(value?: IValueType) => string   | undefined`                  | 根据value值获取label |
-| `isEnumValue`     | `(value?: IValueType) => boolean` | 判断传入的值是否是枚举值    |
+| 属性              | 类型                                           | 描述                        |
+| :---------------- | :--------------------------------------------- | :-------------------------- |
+| `getHtml`         | `(value?: IValueType) => string`               | 根据value值获取html代码     |
+| `getTagHtml`      | `(value?: IValueType) => string`               | 根据value值获取tag html代码 |
+| `getLabelByValue` | `(value?: IValueType) => string / undefined` | 根据value值获取label        |
+| `isEnumValue`     | `(value?: IValueType) => boolean`              | 判断传入的值是否是枚举值    |
