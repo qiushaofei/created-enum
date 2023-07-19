@@ -1,4 +1,6 @@
-# 创建易于使用的枚举
+# 描述
+
+创建易于使用的枚举
 
 # Install
 
@@ -13,9 +15,9 @@ yarn add created-enum -S
 #### 创建基础枚举
 
 ```ts
-import {createdEnums} from 'created-enum'
+import {createdEnum} from 'created-enum'
 
-export const enumResult = createdEnums([
+export const enumResult = createdEnum([
     {
         key: 'Success',
         value: 0,
@@ -61,7 +63,7 @@ enumResult.options
 #### 拓展枚举
 
 ```ts
-import {createdEnums} from 'created-enum'
+import {createdEnum} from 'created-enum'
 
 export const enumResult = (() => {
     const options = [
@@ -81,7 +83,7 @@ export const enumResult = (() => {
         },
     ] as const
 
-    const result = createdEnums(options)
+    const result = createdEnum(options)
     const images = options.map((o) => o.images)
 
     return {
@@ -95,7 +97,7 @@ enumResult.images
 
 ```
 
-# TS
+# 作为类型使用
 
 #### 从枚举中提取类型
 
@@ -108,3 +110,12 @@ interface Itype {
     state:(typeof enumResult.values)[number]
 }
 ```
+
+# 方法
+
+| 属性              | 类型                              | 描述                        |
+| :---------------- | :-------------------------------- | :-------------------------- |
+| `getHtml`         | `(value?: IValueType) => string`  | 根据value值获取html代码     |
+| `getTagHtml`      | `(value?: IValueType) => string`  | 根据value值获取tag html代码 |
+| `getLabelByValue` | `(value?: IValueType) => string   | undefined`                  | 根据value值获取label |
+| `isEnumValue`     | `(value?: IValueType) => boolean` | 判断传入的值是否是枚举值    |

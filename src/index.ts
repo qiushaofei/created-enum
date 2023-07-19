@@ -37,7 +37,7 @@ type GetObjectType<
 /**
  * 根据配置数组获取某个key值的集合类型
  */
-export type GetKeyValueArrayByOptionArray<
+type GetKeyValueArrayByOptionArray<
     T extends readonly any[],
     K extends string
 > = GetObjectType<Omit<GetItemTypeByArray<T>, never>, K>
@@ -59,7 +59,7 @@ type IValueType = string | number
  * 根据配置信息创建枚举
  * @param {OptionsArr} options 配置信息
  */
-export const createdEnums = <T extends OptionsArr>(options: T) => {
+export const createdEnum = <T extends OptionsArr>(options: T) => {
     /**
      * 枚举
      */
@@ -89,6 +89,11 @@ export const createdEnums = <T extends OptionsArr>(options: T) => {
     const _getItem = (value?: IValueType) => {
         return options.find((o) => `${o.value}` === `${value}`)
     }
+
+    /**
+     * 根据value获取枚举label值
+     */
+    const getLabelByValue = (value?: IValueType) => _getItem(value)?.label
 
     /**
      * 根据传入的value获取对应的 HtmlDom
@@ -153,6 +158,11 @@ export const createdEnums = <T extends OptionsArr>(options: T) => {
          * 根据枚举 value 获取 taghtml
          */
         getTagHtml,
+
+        /**
+         * 根据value获取枚举label值
+         */
+        getLabelByValue,
 
         /**
          * 判断传入的枚举值是否为当前枚举内的值
