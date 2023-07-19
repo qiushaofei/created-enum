@@ -6,7 +6,7 @@
 
 #### yarn安装
 
-```ts
+```shell
 yarn add created-enum -S
 ```
 
