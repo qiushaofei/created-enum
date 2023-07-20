@@ -1,6 +1,6 @@
 {
     "name": "created-enum",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "description": "创建易于使用、并且有类型推导的枚举",
     "main": "src/index.ts",
     "types": "src/type.d.ts",
