@@ -2,6 +2,11 @@
 # yarn lockfile v1
 
 
+created-enum@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.npmjs.org/created-enum/-/created-enum-1.0.0.tgz#6f6e744d702fcee7402a3e4dea691e4e7c12c428"
+  integrity sha512-uc76wDN8ggOiYV1A7YQyYQQVRrxaGOnSyVmlKmue/A+uZr9i72KWRgt1J78UUKC5isue9ZzFA72Rhzv0Iz2n7g==
+
 typescript@^5.1.6:
   version "5.1.6"
   resolved "https://registry.npmmirror.com/typescript/-/typescript-5.1.6.tgz#02f8ac202b6dad2c0dd5e0913745b47a37998274"

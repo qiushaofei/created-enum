@@ -1,60 +1,10 @@
-type IObject = {
-    [key: string]: string | number
-}
-type Item = {
-    readonly label: string
-    readonly key: string
-    readonly value: string | number
-    readonly [key: string]: any
-}
+import {
+    CreatedEnumReulst,
+    IObject,
+    IValueType,
+    OptionsArr,
+} from './type'
 
-type OptionsArr = readonly Item[]
-
-/**
- * 提取数组的对象类型
- */
-type GetItemTypeByArray<Arr extends readonly any[]> = Arr extends readonly [
-    infer First,
-    ...infer Right
-]
-    ? First | GetItemTypeByArray<Right>
-    : never
-
-/**
- * 提取对象属性类型
- * @param {T} 对象类型
- * @param {K} 属性key
- */
-type GetObjectType<
-    T extends Record<string, any>,
-    K extends string
-> = T extends {
-    [key in K]: infer R
-}
-    ? R
-    : never
-
-/**
- * 根据配置数组获取某个key值的集合类型
- */
-type GetKeyValueArrayByOptionArray<
-    T extends readonly any[],
-    K extends string
-> = GetObjectType<Omit<GetItemTypeByArray<T>, never>, K>
-/**
- * 获取对象中的参数作为枚举键值对
- */
-type GetObjectEnumKeyValue<T extends Record<string | number, any>> =
-    T['key'] extends string ? { readonly [k in T['key']]: T['value'] } : never
-
-/**
- * 获取数组中的枚举键值对
- */
-type GetArrayEnumKeyValue<T> = T extends readonly [infer First, ...infer Rest]
-    ? GetObjectEnumKeyValue<First & {}> & GetArrayEnumKeyValue<Rest>
-    : unknown
-
-type IValueType = string | number
 /**
  * 根据配置信息创建枚举
  * @param {OptionsArr} options 配置信息
@@ -126,50 +76,16 @@ export const createdEnum = <T extends OptionsArr>(options: T) => {
     }
 
     const result = {
-        /**
-         * 枚举
-         */
-        enums: enums as GetArrayEnumKeyValue<T>,
-
-        /**
-         * key 集合
-         */
-        keys: keys as GetKeyValueArrayByOptionArray<T, 'key'>[],
-        /**
-         * value 集合
-         */
-        values: values as GetKeyValueArrayByOptionArray<T, 'value'>[],
-        /**
-         * label 集合
-         */
-        labels: labels as GetKeyValueArrayByOptionArray<T, 'label'>[],
-
-        /**
-         * 配置信息
-         */
+        enums,
+        keys,
+        values,
+        labels,
         options,
-
-        /**
-         * 根据枚举 value 获取 html
-         */
         getHtml,
-
-        /**
-         * 根据枚举 value 获取 taghtml
-         */
         getTagHtml,
-
-        /**
-         * 根据value获取枚举label值
-         */
         getLabelByValue,
-
-        /**
-         * 判断传入的枚举值是否为当前枚举内的值
-         * @returns {boolean}
-         */
         isEnumValue,
     }
 
-    return result
+    return result as CreatedEnumReulst<T>
 }

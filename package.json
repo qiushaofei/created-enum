@@ -1,14 +1,25 @@
 {
-  "name": "created-enum",
-  "version": "1.0.0",
-  "description": "创建枚举",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "author": "",
-  "license": "ISC",
-  "devDependencies": {
-    "typescript": "^5.1.6"
-  }
+    "name": "created-enum",
+    "version": "1.0.0",
+    "description": "创建易于使用、并且有类型推导的枚举",
+    "main": "src/index.ts",
+    "types": "src/type.d.ts",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/qiushaofei/created-enum",
+        "directory": "created-enum"
+    },
+    "keywords": [
+        "enum",
+        "createEnum"
+    ],
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "author": "qiushaofei",
+    "license": "ISC",
+    "devDependencies": {
+        "typescript": "^5.1.6"
+    },
+    "dependencies": {}
 }
